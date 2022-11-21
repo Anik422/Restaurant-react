@@ -29,10 +29,10 @@ const Comment = props => {
                     <CardFooter>
                         <small className="text-muted">
                             <div className="row">
-                                <div className="col-6" style={{textAlign:'center'}}>
+                                <div className="col-6" style={{ textAlign: 'center' }}>
                                     {date}
                                 </div>
-                                <div className="col-6" style={{textAlign:'center'}}>
+                                <div className="col-6" style={{ textAlign: 'center' }}>
                                     Food Rating : {props.comment.rating}
                                 </div>
                             </div>
