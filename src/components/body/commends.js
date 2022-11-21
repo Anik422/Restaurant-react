@@ -28,7 +28,14 @@ const Comment = props => {
                     </CardBody>
                     <CardFooter>
                         <small className="text-muted">
-                            {date}
+                            <div className="row">
+                                <div className="col-6" style={{textAlign:'center'}}>
+                                    {date}
+                                </div>
+                                <div className="col-6" style={{textAlign:'center'}}>
+                                    Food Rating : {props.comment.rating}
+                                </div>
+                            </div>
                         </small>
                     </CardFooter>
                 </Card>
