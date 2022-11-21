@@ -1,7 +1,7 @@
 const DISHES = [
     {
         id:0,
-        name:"Ginger Burger",
+        name:"Ginger Burger 1",
         image:'assets/images/burger.jpg',
         category:'meal',
         lable:"Hot",
@@ -41,7 +41,7 @@ const DISHES = [
     },
     {
         id:1,
-        name:"Ginger Burger",
+        name:"Ginger Burger 2",
         image:'assets/images/burger.jpg',
         category:'meal',
         lable:"Hot",
@@ -81,7 +81,7 @@ const DISHES = [
     },
     {
         id:2,
-        name:"Ginger Burger",
+        name:"Ginger Burger 3",
         image:'assets/images/burger.jpg',
         category:'meal',
         lable:"Hot",
@@ -121,7 +121,7 @@ const DISHES = [
     },
     {
         id:3,
-        name:"Ginger Burger",
+        name:"Ginger Burger 4",
         image:'assets/images/burger.jpg',
         category:'meal',
         lable:"Hot",
@@ -161,7 +161,7 @@ const DISHES = [
     },
     {
         id:4,
-        name:"Ginger Burger",
+        name:"Ginger Burger 5",
         image:'assets/images/burger.jpg',
         category:'meal',
         lable:"Hot",
@@ -201,7 +201,7 @@ const DISHES = [
     },
     {
         id:5,
-        name:"Ginger Burger",
+        name:"Ginger Burger 6",
         image:'assets/images/burger.jpg',
         category:'meal',
         lable:"Hot",
@@ -241,7 +241,7 @@ const DISHES = [
     },
     {
         id:6,
-        name:"Ginger Burger",
+        name:"Ginger Burger 7",
         image:'assets/images/burger.jpg',
         category:'meal',
         lable:"Hot",
