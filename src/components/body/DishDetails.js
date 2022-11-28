@@ -3,7 +3,7 @@ import { Card, CardBody, CardImg, CardHeader, CardTitle, CardText } from "reacts
 import Comment from "./commends";
 
 const DishDetali = props => {
-    let comment = props.dish.comments.map(item => {
+    let comment = props.comments.map(item => {
         return (
             <Comment comment={item} key={item.id} />
         );

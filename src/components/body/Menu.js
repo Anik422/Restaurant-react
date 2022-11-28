@@ -1,17 +1,29 @@
 import React, { Component } from "react";
 import DISHES from "../../data/dishes";
+import COMMENTS from "../../data/Comments";
 import MenuItem from "./ManuItem";
 import DishDetali from "./DishDetails";
+import { CardGroup, Modal, ModalBody, ModalFooter, Button } from "reactstrap";
 
 
 class Menu extends Component {
     state = {
         dishes: DISHES,
+        Comments:COMMENTS,
         selectedDish: null,
+        modalOpen: false,
     }
 
     onDishSelect = dish => {
-        this.setState({ selectedDish: dish })
+        this.setState({ 
+            selectedDish: dish,
+            modalOpen: !this.state.modalOpen
+        })
+    }
+    toggleModal = () =>{
+        this.setState({
+            modalOpen: !this.state.modalOpen
+        })
     }
 
     render() {
@@ -26,18 +38,34 @@ class Menu extends Component {
 
         let dishDetails = null;
         if (this.state.selectedDish !== null) {
-            dishDetails = <DishDetali dish={this.state.selectedDish} />
+            const comments = this.state.Comments.filter(comment => {
+                return comment.dishId === this.state.selectedDish.id
+            })
+            console.log(comments)
+            dishDetails = <DishDetali dish={this.state.selectedDish} comments={comments} />
         }
+
 
         return (
             <div className="container">
-                <div className="row">
-                    <div className="col-6">
+                <div>
+                    <CardGroup>
+                        {menu}
+                    </CardGroup>
+                    <Modal isOpen={this.state.modalOpen} onClick={this.toggleModal}>
+                        <ModalBody>
+                            {dishDetails}
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.toggleModal}>Close</Button>
+                        </ModalFooter>
+                    </Modal>
+                    {/* <div className="col-6">
                         {menu}
                     </div>
                     <div className="col-6">
                         {dishDetails}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );

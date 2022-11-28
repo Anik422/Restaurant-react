@@ -12,9 +12,6 @@ const Comment = props => {
                     className="my-2"
                     color="primary"
                     outline
-                    style={{
-                        width: '18rem'
-                    }}
                 >
                     <CardHeader>
                         <CardTitle tag="h5">

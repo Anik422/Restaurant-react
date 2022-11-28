@@ -6,7 +6,7 @@ const MenuItem = props => {
         <div>
             <Card inverse style={{ margin: "10px" }}>
                 <CardBody>
-                    <CardImg width="100%" alt={props.dish.name} src={props.dish.image} style={{ opacity: "0.5" }} />
+                    <CardImg width="80%" alt={props.dish.name} src={props.dish.image} style={{ opacity: "0.5", width:"50vh" }} />
                     <CardImgOverlay>
                         <CardTitle
                             onClick={() => props.DishSelect(props.dish)}

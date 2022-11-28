@@ -2,3 +2,18 @@
     color: black;
     text-align: center;
 }
+
+.footer{
+  background-color: #D1C4E9;
+  margin:  0px auto;
+  padding-top: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 680px) {
+    .card-img {
+      width: 100% !important;
+    }
+  }
