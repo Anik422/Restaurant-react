@@ -3,7 +3,7 @@ import { Card, CardHeader, CardBody, CardTitle, CardText, CardGroup, CardFooter 
 import dateFormat, { masks } from "dateformat";
 const Comment = props => {
     let date = dateFormat(props.comment.data, "dddd, mmmm dS, yyyy, h:MM:ss TT");
-    console.log(date);
+    console.log(props);
     return (
         <div>
             <CardGroup>

@@ -1,15 +1,35 @@
 import React, { Component } from "react";
-import DISHES from "../../data/dishes";
-import COMMENTS from "../../data/Comments";
 import MenuItem from "./ManuItem";
 import DishDetali from "./DishDetails";
 import { CardGroup, Modal, ModalBody, ModalFooter, Button } from "reactstrap";
+import { connect } from "react-redux";
+
+const mapStateToProps = state =>{
+    return { 
+        dishes: state.dishes,
+        Comments: state.comments,
+    }
+}
+
+
+const mapDispatchToProps = dispatch =>{
+    return{
+        addcomment: (dishId, rating, comment, author) => dispatch({
+            type: "ADD_COM",
+            payload:{
+                dishId: dishId,
+                rating: rating,
+                comment: comment,
+                author: author,
+            }
+        })
+    }
+}
+
 
 
 class Menu extends Component {
     state = {
-        dishes: DISHES,
-        Comments:COMMENTS,
         selectedDish: null,
         modalOpen: false,
     }
@@ -27,7 +47,7 @@ class Menu extends Component {
     }
 
     render() {
-        const menu = this.state.dishes.map(item => {
+        const menu = this.props.dishes.map(item => {
             return (
                 <MenuItem
                     dish={item}
@@ -38,11 +58,11 @@ class Menu extends Component {
 
         let dishDetails = null;
         if (this.state.selectedDish !== null) {
-            const comments = this.state.Comments.filter(comment => {
+            const comments = this.props.Comments.filter(comment => {
                 return comment.dishId === this.state.selectedDish.id
             })
-            console.log(comments)
-            dishDetails = <DishDetali dish={this.state.selectedDish} comments={comments} />
+            // console.log(comments)
+            dishDetails = <DishDetali dish={this.state.selectedDish} comments={comments} addcomment={this.props.addcomment} />
         }
 
 
@@ -52,7 +72,7 @@ class Menu extends Component {
                     <CardGroup>
                         {menu}
                     </CardGroup>
-                    <Modal isOpen={this.state.modalOpen} onClick={this.toggleModal}>
+                    <Modal isOpen={this.state.modalOpen}>
                         <ModalBody>
                             {dishDetails}
                         </ModalBody>
@@ -72,4 +92,4 @@ class Menu extends Component {
     }
 }
 
-export default Menu;
+export default connect(mapStateToProps, mapDispatchToProps) (Menu);

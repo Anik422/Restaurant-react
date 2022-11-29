@@ -1,11 +1,13 @@
 import React from "react";
 import { Card, CardBody, CardImg, CardHeader, CardTitle, CardText } from "reactstrap";
 import Comment from "./commends";
+import CommentForm from "./CommentForm";
+
 
 const DishDetali = props => {
     let comment = props.comments.map(item => {
         return (
-            <Comment comment={item} key={item.id} />
+            <Comment comment={item} key={item.id}/>
         );
     })
     return (
@@ -37,6 +39,8 @@ const DishDetali = props => {
                     </Card>
                 </div>
                 {comment}
+                <hr />
+                <CommentForm dishId={props.dish.id} addcomment={props.addcomment} />
             </div>
         </div>
     );
