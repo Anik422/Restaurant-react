@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 import { Button, FormGroup, Label, Col  } from "reactstrap";
-import { LocalForm, Control, Errors } from 'react-redux-form';
+import { Form, Control, Errors, actions } from 'react-redux-form';
+import { connect } from "react-redux";
+
+const mapDispatchToProps = dispatch => {
+    return {
+        resetFeetbackForm : () => {
+            dispatch(actions.reset('feedback')) 
+        }
+    }
+};
+
 
 const required = val => val && val.length;
 const isNumber = val => !isNaN(Number(val));
@@ -10,6 +20,7 @@ const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 class Contact extends Component {
     handleSubmit = values => {
         console.log(values);
+        this.props.resetFeetbackForm();
     }
 
     render() {
@@ -21,7 +32,7 @@ class Contact extends Component {
                         <h3>Send us your Feedback</h3>
                     </div>
                     <div className="Col-12 Col-md-7">
-                        <LocalForm onSubmit={values => this.handleSubmit(values)}>
+                        <Form model="feedback" onSubmit={values => this.handleSubmit(values)}>
                             <FormGroup row>
                                 <Label for="firstname" md={2}>First Name</Label>
                                 <Col  md={10}>
@@ -180,11 +191,11 @@ class Contact extends Component {
                                     </Button>
                                 </Col>
                             </FormGroup>
-                        </LocalForm>
+                        </Form>
                     </div>
                 </div>
             </div>
         );
     }
 }
-export default Contact;
+export default connect(null, mapDispatchToProps) (Contact);
