@@ -3,7 +3,8 @@ import MenuItem from "./ManuItem";
 import DishDetali from "./DishDetails";
 import { CardGroup, Modal, ModalBody, ModalFooter, Button } from "reactstrap";
 import { connect } from "react-redux";
-import { addcomment } from "../../redux/actionCreators";
+import { addcomment, fatchdDishes } from "../../redux/actionCreators";
+import Loading from "./Loading"
 
 const mapStateToProps = state =>{
     return { 
@@ -15,7 +16,8 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
     return{
-        addcomment: (dishId, rating, comment, author) => dispatch(addcomment(dishId, rating, comment, author))
+        addcomment: (dishId, rating, comment, author) => dispatch(addcomment(dishId, rating, comment, author)),
+        fatchdDishes: () => dispatch(fatchdDishes())
     }
 }
 
@@ -38,9 +40,18 @@ class Menu extends Component {
             modalOpen: !this.state.modalOpen
         })
     }
+    componentDidMount(){
+        this.props.fatchdDishes()
+    }
 
     render() {
-        const menu = this.props.dishes.map(item => {
+        document.title = "Manu";
+        if(this.props.dishes.isLoading){
+            return(
+                <Loading />
+            )
+        }
+        const menu = this.props.dishes.dishes.map(item => {
             return (
                 <MenuItem
                     dish={item}
